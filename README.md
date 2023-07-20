@@ -1,0 +1,1 @@
+# my-Newsapp-function-base-component
