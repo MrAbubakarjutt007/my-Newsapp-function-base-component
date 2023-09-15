@@ -21,7 +21,7 @@ const News =(props)=>{
   const newsupdate=async()=>
   {
     props.setProgress(10);
-    let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=b9eac570049b4253a75bebe7b945d132 &page=${page}&pageSize=${props.pageSize}`;
     let data= await fetch(url);
     let getdata = await data.json()
     setArticles(getdata.articles)
@@ -30,13 +30,13 @@ const News =(props)=>{
      props.setProgress(100) 
   }
   
-  useEffect(()=>
+   useEffect(()=>
   {
     document.title=`${capitalizeFirstLetter(props.category)}-NEWS HADLINES`;
   
     newsupdate()
     // eslint-disable-next-line
-  },[])
+  },[]);
   
  const enterPreviousData=async()=>
   {
@@ -54,14 +54,15 @@ const News =(props)=>{
 
   
     return (
+      
       <div className='container my-3'>
         <h2 className='text-center'>NEWS HEDLINES-FOR PUBLIC {capitalizeFirstLetter(props.category)}</h2>
         {loading && <Spdata/>}    
          <div className="row">
          {!loading && articles.map((element)=>{
-             return <div className="col-md-4" key={element.url}>
-             <NewsItem  title={element.title?element.title : ""} description={element.description?element.description :""} arther={element.author} date={element.publishedAt} imgurl={element.urlToImage}  newdata={element.url} source={element.source.name}/>
-             </div>
+              return <div className="col-md-4" key={element.url}>
+              <NewsItem  title={element.title?element.title : ""} description={element.description?element.description :""} arther={element.author} date={element.publishedAt} imgurl={element.urlToImage}  newdata={element.url} source={element.source.name}/>
+              </div>
          })}   
          </div>
          <div className="container d-flex justify-content-between">
@@ -73,7 +74,7 @@ const News =(props)=>{
       </div>
     )
 }
-News.defaultProps = 
+ News.defaultProps = 
 {
  country:'in',
  pageSize:6,

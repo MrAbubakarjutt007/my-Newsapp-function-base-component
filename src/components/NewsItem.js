@@ -1,7 +1,7 @@
 import React from 'react'
 const NewsItem =(props)=>{
   
-    let { title, description, imgurl, newdata, arther, date, source } = props;
+    const { title, description, imgurl, newdata, arther, date, source } = props;
     return (
       <div className='container-fluid'>
         <div className="card my-3 img-thumbnail">
