@@ -1,11 +1,11 @@
 import React,{useEffect,useState} from 'react';
 import NewsItem from './NewsItem';
-import Spdata from './Spdata';
+//import Spdata from './Spdata';
 
 
 const News =(props)=>{
   const[articles, setArticles]=useState([])
-  const[loading, setLoading]=useState(true)
+  //const[loading, setLoading]=useState(true)
   const[page, setPage]=useState(1)
   const[totalResults,changetotalResults ]=useState(0)
    
@@ -25,7 +25,7 @@ const News =(props)=>{
     let data= await fetch(url);
     let getdata = await data.json()
     setArticles(getdata.articles)
-    setLoading(false)
+    //setLoading(false)
     changetotalResults(getdata.totalResults)
      props.setProgress(100) 
   }
@@ -57,9 +57,9 @@ const News =(props)=>{
       
       <div className='container my-3'>
         <h2 className='text-center'>NEWS HEDLINES-FOR PUBLIC {capitalizeFirstLetter(props.category)}</h2>
-        {loading && <Spdata/>}    
+        {/* {loading && <Spdata/>}     */}
          <div className="row">
-         {!loading && articles.map((element)=>{
+         {articles.map((element)=>{
               return <div className="col-md-4" key={element.url}>
               <NewsItem  title={element.title?element.title : ""} description={element.description?element.description :""} arther={element.author} date={element.publishedAt} imgurl={element.urlToImage}  newdata={element.url} source={element.source.name}/>
               </div>
